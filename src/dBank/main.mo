@@ -1,5 +1,6 @@
 import Debug "mo:base/Debug";
 import Nat "mo:base/Nat";
+import Int "mo:base/Int";
 
 actor DBank {
   var currentValue = 300;
@@ -14,8 +15,19 @@ public func topUp(amount:Nat){
   };
 
 public func withdraw(amount:Nat){
+  let tempValue : Int = currentValue - amount ;
+  if(tempValue>=0){
     currentValue -= amount;
-     Debug.print(debug_show(currentValue));
+    Debug.print(debug_show(currentValue));
+  }
+  else{
+    Debug.print("Insufficient funds");
+  }
+  };
+  
+ // query function used to perform read operations on canisters
+  public query func checkBalance() : async Nat{
+   return currentValue;
   };
 
 
