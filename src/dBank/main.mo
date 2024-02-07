@@ -3,9 +3,12 @@ import Nat "mo:base/Nat";
 import Int "mo:base/Int";
 
 actor DBank {
-  var currentValue = 300;
-  currentValue := 100;
- let id = 23444884;
+  // Using stable keyword persist the value of variable
+ stable var currentValue = 300;
+  // currentValue := 100;
+
+//  let id = 23444884;
+
   // Debug.print(debug_show(id));
 
 //function to toup a wallet
